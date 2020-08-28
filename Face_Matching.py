@@ -1,6 +1,6 @@
 from keras_vggface.vggface import VGGFace
-from keras_vggface.utils import preprocess_input, decode_predictions
-from numpy import expand_dims, asarray
+from keras_vggface.utils import preprocess_input
+from numpy import asarray
 from matplotlib import pyplot as plt
 from mtcnn.mtcnn import MTCNN
 from PIL import Image
@@ -23,8 +23,8 @@ def extract_face(filename, required_size=(224, 224)):
     return face_array
 
 
-def get_embeddings(filenames):
-    faces = [extract_face(f) for f in filenames]
+def get_embeddings(filename):
+    faces = [extract_face(f) for f in filename]
     samples = asarray(faces, 'float32')
     samples = preprocess_input(samples, version=2)
     model = VGGFace(model='resnet50', include_top=False, input_shape=(224, 224, 3), pooling='avg')
