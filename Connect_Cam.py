@@ -62,6 +62,7 @@ Mat_id = embeddings[0]
 vc = cv2.VideoCapture(0)
 
 rval, frame = vc.read()
+print(frame)
 frameID = get_embeddings(pyplot.imread(frame))
 # verify known photos of sharon
 print('Positive Tests')
